@@ -323,11 +323,11 @@ void draw_pacman() {
 
     // **Matriz 5x5 do Pac-Man**
     uint32_t pacman[25] = {
-        X,  Y,  Y,  Y,  Y,  
-        X,  X,  Y,  Y,  Y,  
-        Y,  Y,  X,  X,  X,  
-        X,  X,  Y,  Y,  Y,  
-        X,  Y,  Y,  Y,  Y
+        Y,  Y,  Y,  Y,  X,  
+        Y,  Y,  Y,  X,  X,  
+        X,  X,  X,  Y,  Y,  
+        Y,  Y,  Y,  X,  X,  
+        Y,  Y,  Y,  Y,  X
     };
 
     // **Enviar a matriz para os LEDs**

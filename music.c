@@ -391,37 +391,37 @@ void play_Pokemon(uint pin) {
 }
 
 void play_Pacman(uint pin) {
-    tone(pin, 494, 150);
+    tone(pin, 494, 75);
+    tone(pin, 988, 75);
+    tone(pin, 740, 75);
+    tone(pin, 622, 75);
     tone(pin, 988, 150);
-    tone(pin, 740, 150);
+    tone(pin, 740, 75);
     tone(pin, 622, 150);
-    tone(pin, 988, 300);
-    tone(pin, 740, 150);
-    tone(pin, 622, 300);
+    tone(pin, 523, 75);
+    tone(pin, 1047, 75);
+    tone(pin, 784, 75);
+    tone(pin, 659, 75);
     tone(pin, 523, 150);
-    tone(pin, 1047, 150);
-    tone(pin, 784, 150);
+    tone(pin, 784, 75);
     tone(pin, 659, 150);
-    tone(pin, 523, 300);
-    tone(pin, 784, 150);
-    tone(pin, 659, 300);
-    tone(pin, 494, 150);
+    tone(pin, 494, 75);
+    tone(pin, 988, 75);
+    tone(pin, 740, 75);
+    tone(pin, 622, 75);
     tone(pin, 988, 150);
-    tone(pin, 740, 150);
+    tone(pin, 740, 75);
     tone(pin, 622, 150);
-    tone(pin, 988, 300);
-    tone(pin, 740, 150);
-    tone(pin, 622, 300);
-    tone(pin, 622, 150);
-    tone(pin, 659, 150);
-    tone(pin, 698, 150);
-    tone(pin, 698, 150);
-    tone(pin, 740, 150);
-    tone(pin, 784, 150);
-    tone(pin, 784, 150);
-    tone(pin, 831, 150);
-    tone(pin, 880, 150);
-    tone(pin, 988, 300);
-        
+    tone(pin, 622, 75);
+    tone(pin, 659, 75);
+    tone(pin, 698, 75);
+    tone(pin, 698, 75);
+    tone(pin, 740, 75);
+    tone(pin, 784, 75);
+    tone(pin, 784, 75);
+    tone(pin, 831, 75);
+    tone(pin, 880, 75);
+    tone(pin, 988, 150);
 }
+
     
