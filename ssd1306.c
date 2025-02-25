@@ -156,14 +156,47 @@ void ssd1306_vline(ssd1306_t *ssd, uint8_t x, uint8_t y0, uint8_t y1, bool value
 void ssd1306_draw_char(ssd1306_t *ssd, char c, uint8_t x, uint8_t y) {
   uint16_t index = 0;
 
-  if (c >= 'A' && c <= 'Z') {
-      index = (c - 'A' + 11) * 8;  // Maiúsculas começam na posição 11
-  } else if (c >= 'a' && c <= 'z') {
-      index = (c - 'a' + 37) * 8;  // Minúsculas começam na posição 37
-  } else if (c >= '0' && c <= '9') {
-      index = (c - '0' + 1) * 8;   // Números começam na posição 1
+  if (c >= '0' && c <= '9') {  
+      index = (c - '0' + 1) * 8;  // Números começam na posição 1
+  } else if (c >= 'A' && c <= 'Z') {  
+      index = (c - 'A' + 11) * 8;  // Letras maiúsculas começam na posição 11
+  } else if (c >= 'a' && c <= 'z') {  
+      index = (c - 'a' + 37) * 8;  // Letras minúsculas começam na posição 37
+  } else if (c == ' ') {  
+      index = 0 * 8;  // Espaço está na posição 0
   } else {
-      return; // Ignora caracteres não suportados
+      // Cálculo correto da posição dos caracteres especiais
+      switch (c) {
+          case '!': index = (11 + 26 + 26) * 8; break; // !
+          case '"': index = (11 + 26 + 26 + 1) * 8; break; // "
+          case '#': index = (11 + 26 + 26 + 2) * 8; break; // #
+          case '$': index = (11 + 26 + 26 + 3) * 8; break; // $
+          case '%': index = (11 + 26 + 26 + 4) * 8; break; // %
+          case '&': index = (11 + 26 + 26 + 5) * 8; break; // &
+          case '\'': index = (11 + 26 + 26 + 6) * 8; break; // '
+          case '(': index = (11 + 26 + 26 + 7) * 8; break; // (
+          case ')': index = (11 + 26 + 26 + 8) * 8; break; // )
+          case '*': index = (11 + 26 + 26 + 9) * 8; break; // *
+          case '+': index = (11 + 26 + 26 + 10) * 8; break; // +
+          case ',': index = (11 + 26 + 26 + 11) * 8; break; // ,
+          case '-': index = (11 + 26 + 26 + 12) * 8; break; // -
+          case '.': index = (11 + 26 + 26 + 13) * 8; break; // .
+          case '/': index = (11 + 26 + 26 + 14) * 8; break; // /
+          case ':': index = (11 + 26 + 26 + 15) * 8; break; // :
+          case ';': index = (11 + 26 + 26 + 16) * 8; break; // ;
+          case '<': index = (11 + 26 + 26 + 17) * 8; break; // <
+          case '=': index = (11 + 26 + 26 + 18) * 8; break; // =
+          case '>': index = (11 + 26 + 26 + 19) * 8; break; // >
+          case '?': index = (11 + 26 + 26 + 20) * 8; break; // ?
+          case '@': index = (11 + 26 + 26 + 21) * 8; break; // @
+          case '^': index = (11 + 26 + 26 + 22) * 8; break; // ^
+          case '\n': index = (11 + 26 + 26 + 23) * 8; break; // \n
+          case '|': index = (11 + 26 + 26 + 24) * 8; break; // |
+          case '_': index = (11 + 26 + 26 + 25) * 8; break; // _
+          case '~': index = (11 + 26 + 26 + 26) * 8; break; // ~
+          case '`': index = (11 + 26 + 26 + 27) * 8; break; // ` 
+          default: return;  // Ignora caracteres não suportados
+      }
   }
 
   for (uint8_t i = 0; i < 8; ++i) {
@@ -173,6 +206,9 @@ void ssd1306_draw_char(ssd1306_t *ssd, char c, uint8_t x, uint8_t y) {
       }
   }
 }
+
+
+
 
 // Função para desenhar uma string na tela OLED
 void ssd1306_draw_string(ssd1306_t *ssd, const char *str, uint8_t x, uint8_t y) {

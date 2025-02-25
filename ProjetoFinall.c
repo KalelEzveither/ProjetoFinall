@@ -35,12 +35,12 @@ ssd1306_t ssd;
 volatile uint32_t last_press_time_A = 0;
 volatile uint32_t last_press_time_B = 0;
 
-const char *games[] = {"Pokemon", "Sonic", "Pacman", "Zelda", "Undertale"};
+const char *games[] = {"Pokemon", "Sonic", "Pacman", "Zelda", "Undertale "};
 const int num_games = 5;
 int current_game = 0;
 
 bool button_A_pressed = false;  
-bool button_B_pressed = false;  
+bool button_B_pressed = false;
 
 
 void button_irq_handler(uint gpio, uint32_t events);
@@ -81,24 +81,76 @@ int main() {
             button_A_pressed = false;
             switch (current_game) {
                 case 0:
+                    ssd1306_fill(&ssd, false); 
+                    /*ssd1306_draw_string(&ssd, " (\n--/) ___", 20, 5); 
+                    ssd1306_draw_string(&ssd, " (o^.^) < / ", 20, 15); 
+                    ssd1306_draw_string(&ssd, "  /  \n  / > ", 20, 25);  
+                    ssd1306_draw_string(&ssd, " ( -  )> / ", 20, 35);
+                    ssd1306_draw_string(&ssd, "  ^^ ^^ ", 20, 45);*/
+                    ssd1306_draw_string(&ssd, "\n _.__._/.-\"", 2, 2);
+                    ssd1306_draw_string(&ssd, " \n         /      ,", 2, 10);
+                    ssd1306_draw_string(&ssd, " /()   ()  \n    .' -._", 2, 16);
+                    ssd1306_draw_string(&ssd, " |)   .   ()\n  /   _.'", 2, 24);
+                    ssd1306_draw_string(&ssd, " \n\n  ---     ,; '. <", 2, 32);
+                    ssd1306_draw_string(&ssd, "  ;.__     ,;|   > \n", 2, 40);
+                    ssd1306_draw_string(&ssd, " / ,    / ,  |.-'.-'", 2, 48);
+                    ssd1306_draw_string(&ssd, "(_/    (_/ ,;|.<", 2, 56);
+                    ssd1306_send_data(&ssd);
                     draw_pokeball();
                     play_Pokemon(BUZZER_A);
                     break;
                 case 1:
+                    ssd1306_fill(&ssd, false);
+                    ssd1306_draw_string(&ssd, " |\n\n ,-'\'/  |'", 2, 2);
+                    ssd1306_draw_string(&ssd, " |,_  ,--.    /", 2, 10);
+                    ssd1306_draw_string(&ssd, "/,-. ,''.   (_", 2, 18);
+                    ssd1306_draw_string(&ssd, "(  o|  o)__   \''-.", 2, 24);
+                    ssd1306_draw_string(&ssd, ",-._.,--'_ '. _.,-'", 2, 32);
+                    ssd1306_draw_string(&ssd, "\n\'' ___.,'' /,'", 2, 40);
+                    ssd1306_draw_string(&ssd, "  \n-.__.,--'", 2, 48);
+                    ssd1306_send_data(&ssd);
                     draw_sonic();
                     play_Sonic(BUZZER_A);
                     break;
                 case 2:
+                    ssd1306_fill(&ssd, false);
+                    ssd1306_draw_string(&ssd, " .-.  .-.  ---.  ", 2, 2);
+                    ssd1306_draw_string(&ssd, "| OO|| OO|/  /' ", 2, 10);
+                    ssd1306_draw_string(&ssd, "|   ||   |\n  \n. ", 2, 16);
+                    ssd1306_draw_string(&ssd, "'^^^''^^^' ---'  ", 2, 24);
+                    ssd1306_draw_string(&ssd, "===============", 2, 32);
+                    ssd1306_draw_string(&ssd, ".-. .-.  .--. | ", 2, 40);
+                    ssd1306_draw_string(&ssd, "'-' '-'  '..' |", 2, 48);
+                    ssd1306_draw_string(&ssd, "===============", 2, 54);
+                    ssd1306_send_data(&ssd);
                     draw_pacman();
                     play_Pacman(BUZZER_A);
                     break;
                 case 3:
+                    ssd1306_fill(&ssd, false);
+                    ssd1306_draw_string(&ssd, "|             |", 0, 0);
+                    ssd1306_draw_string(&ssd, "\n .--.|__|.--./", 0, 8);
+                    ssd1306_draw_string(&ssd, " |'--'/  \n'--'|", 0, 16);
+                    ssd1306_draw_string(&ssd, " |'  /____\n  '|", 0, 24);
+                    ssd1306_draw_string(&ssd, " | .' .''. '. |", 0, 32);
+                    ssd1306_draw_string(&ssd, "/   |_/  \n_|  \n", 0, 40);
+                    ssd1306_draw_string(&ssd, "|             |", 0, 48);
+                    ssd1306_send_data(&ssd);
                     draw_link();
                     play_Zelda(BUZZER_A);
                     break;
                 case 4:
-                    draw_sans();
-                    play_Megalovania(BUZZER_A);
+                    ssd1306_fill(&ssd, false);
+                    ssd1306_draw_string(&ssd, "  .o0000000o.", 2, 2);
+                    ssd1306_draw_string(&ssd, " |0000000000o|", 2, 10);
+                    ssd1306_draw_string(&ssd, "|00^^^1^^^1001.", 2, 18);
+                    ssd1306_draw_string(&ssd, "00' ()  () 0670", 2, 26);
+                    ssd1306_draw_string(&ssd, "00  ''  '' 7660", 2, 34);
+                    ssd1306_draw_string(&ssd, "9P0oc_   lo0P90", 2, 42);
+                    ssd1306_draw_string(&ssd, "'''^^^1__l8P^l'", 2, 50);
+                    ssd1306_send_data(&ssd);
+                    draw_sans(); 
+                    play_Megalovania(BUZZER_A); 
                     break;
                 }
         }
